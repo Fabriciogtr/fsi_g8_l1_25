@@ -1,5 +1,5 @@
 const fs = require('fs');
-const run = async () => {
+const run = () => {
   let wordCharAt = '';
   const text = fs.readFileSync('./guia_practica_1.3.txt').toString();
   for (line of text.split('\n')) {
