@@ -1,0 +1,7 @@
+*MD5:
+    -carta : a25f7f0b29ee0b3968c860738533a4b9
+    -hack : a25f7f0b29ee0b3968c860738533a4b9
+
+*SHA-1:
+    -carta : 07835fdd04c9afd283046bd30a362a6516b7e216 
+    -hack : 3548db4d0af8fd2f1dbe02288575e8f9f539bfa6
