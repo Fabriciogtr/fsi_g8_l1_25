@@ -1,0 +1,8 @@
+la clave pública del grupo generada y exportada con GPG: fsiXX-pub.asc
+  - gpg --full-generate-key
+la clave pública de los docentes firmada por el grupo: fsi-pub-signed.asc
+el archivo cifrado con la clave pública de los docentes: paracifrar.gpg
+  -  gpg --import fsi-pub.asc 
+
+la clave pública del grupo generada con OpenSSL: fsiXX-pub.pem
+el CSR: fsiXX.csr
