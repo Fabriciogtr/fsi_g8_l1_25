@@ -1,8 +1,36 @@
 la clave pública del grupo generada y exportada con GPG: fsiXX-pub.asc
   - gpg --full-generate-key
+    - 1 (pick RSA)
+    - 4096 (key size)
+    - 0 (does not expire)
+    - grupo08_fsi_2025 (name)
+    - (enter, leave email empty)
+    - fsi08 (comment)
+    - O (confirm)
+  - gpg --export --armor __OUR_GPG_KEY_FINGERPRINT__ > fsi08-pub.asc
+
 la clave pública de los docentes firmada por el grupo: fsi-pub-signed.asc
+  - gpg --import fsi-pub.asc
+  - gpg --sign-key __FSI_PUB_IMPORTED_KEY_FINGERPRINT__  
+  - gpg --export --armor __FSI_PUB_IMPORTED_KEY_FINGERPRINT__ > fsi-pub-signed.asc
+
 el archivo cifrado con la clave pública de los docentes: paracifrar.gpg
-  -  gpg --import fsi-pub.asc 
+  - gpg -r __FSI_PUB_IMPORTED_KEY_FINGERPRINT__ -e paracifrar.txt
+  - mv paracifrar.txt.gpg paracifrar.gpg
 
 la clave pública del grupo generada con OpenSSL: fsiXX-pub.pem
+  - openssl genrsa > fsi08.pem
+  - openssl rsa -in fsi08.pem -pubout --out fsi08-pub.pem
+
 el CSR: fsiXX.csr
+  - openssl req -new -key fsi08.pem -out fsi08.csr
+    - UY (Country code)
+    - Montevideo (state or province)
+    - Parque rodo (Locality)
+    - Udelar (Org name)
+    - FING (Org unit)
+    - grupo08_fsi_2025 (name)
+    - (leave email empty)
+    - (challenge password empty)
+    - (optional company name empty)
+    
