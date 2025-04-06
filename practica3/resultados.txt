@@ -1,1 +1,23 @@
-Llenar
+• Calculando sus valores de hash MD5 y SHA-1.
+  MD5:
+    - carta : a25f7f0b29ee0b3968c860738533a4b9
+    - hack  : a25f7f0b29ee0b3968c860738533a4b9
+
+  SHA-1:
+    - carta : 07835fdd04c9afd283046bd30a362a6516b7e216 
+    - hack  : 3548db4d0af8fd2f1dbe02288575e8f9f539bfa6
+
+  Son distintos en el caso de SHA1 lo que es esperable, ya que ambos archivos difieren en binario.
+  El caso de MD5 es un claro caso de colision de hash.
+
+• Utilizando un visor de postscript.
+  Aqui la diferencia es clara, a pesar de la diferencia en los binarios, la parte de texto plano de ambos archivos es identica.
+  Sin embargo al abrir los archivos en visores estos contienen mensajes completamente distintos
+
+• Utilizando un editor de texto (aquí se verá el código PS).
+  Aqui la diferencia es mas sutil, solo se puede reconocer la diferencia al mirar de cerca los caracteres.
+  No es esperable que sean diferentes, esto se pasaria por alto si no fuera el entorno del laboratorio
+
+• Utilizando el comando diff.
+  Con el comando diff se puede apreciar mejor la diferencia de los archivos, 
+  ya que el output del comando es las lineas con diferencia.
