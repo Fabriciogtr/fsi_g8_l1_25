@@ -1,5 +1,5 @@
 # POLÍTICA DE FIREWALL - IPTABLES
-
+# Los comandos se tomaron del archivo .fw generado al compilar el firewall utilizando fwbuilder. 
 # Política general:
 # - Todo el tráfico no explícitamente permitido es denegado y registrado (Regla 7).
 # - Se utiliza NAT para enmascarar las redes Interna y DMZ hacia Internet.
