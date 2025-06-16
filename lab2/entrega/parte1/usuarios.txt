@@ -1,0 +1,21 @@
+cschurrer:cschurrer
+govando:sirvienta
+
+Se analizo listadopersonal.html, se generaron los username faltantes en base al analisis, luego se extrajo a un archivo con 1 username por linea
+
+Se utilizo la herramienta hydra con el archivo de login y la flag -e con null(n) same(s) y reverse(r) a traves del protocolo ssh
+
+hydra -L logins.txt -e nsr ssh://10.0.8.5
+  [22][ssh] host: 10.0.8.5   login: cschurrer   password: cschurrer
+
+Con dicho usuario se accedio a traves de ftp, ya que cschurrer no permite el login de una shell
+
+Desde el home de cschurrer se retiro el shadow.bak y posteriormente se retiro tambien el archivo passwd de /etc/passwd
+
+En la maquina atacante se utilizo la herramienta unshadow para mezclar el archivo del shadow.bak y el passwd generando un archivo en conjunto
+
+Posteriormente se utiliza dicho archivo junto al diccionario para tratar de obtener la clave que acierte el hash de alguna cuenta utilizando john the ripper
+
+john --wordlist=./dic.txt cschurrer/unshadowed
+  govando:sirvienta:1004:1005:Gabriela P. Ovando:/home/govando:/bin/bash
+

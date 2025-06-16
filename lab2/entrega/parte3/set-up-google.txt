@@ -1,0 +1,34 @@
+Para configurar google 2FA en su cuenta proceda a ejecutar
+
+google-authenticator
+
+Escanee el codigo QR producido en su termian o inserte el codigo de la llave secreta de forma manual dentro de la aplicacion de google authenticator. Una vez configurado proceda a insertar el codigo y esperar una respuesta positiva por parte del programa.
+
+Responda las preguntas para las configuraciones basicas de google-authenticator
+
+Si desea una configuracion mas especifica puede recurrir a las siguientes banderas
+
+ -c, --counter-based            Set up counter-based (HOTP) verification
+
+ Esta bandera le permite configurar el 2FA basado en HMAC, previo a la configuracion de 2FA por HMAC debe consultar con su administrador de sistemas si esta configurado el modulo de autenticacion para no incrementar el contador en caso de fallo
+
+ -t, --time-based               Set up time-based (TOTP) verification
+
+ Esta bandera es para configurar el otro metodo disponible de OTP, el TOPT. En este caso el factor variante es el tiempo y cada cierta cantidad S de tiempo se genera un nuevo token para validar el 2FA
+
+ -d, --disallow-reuse           Disallow reuse of previously used TOTP tokens
+
+ Fuertemente recomendado, aun si su sistema tiene muchos pasos en los que tenga que autenticarse, es preferible que se tenga un bajo tiempo de generacion de token que reutilizar el mismo token.
+
+ -r, --rate-limit=N             Limit logins to N per every M seconds
+ -R, --rate-time=M              Limit logins to N per every M seconds
+
+ Usar estas banderas en conjunto para configurar la cantidad de intentos de login permitidos en una ventana de tiempo,
+
+ -S, --step-size=S              Set interval between token refreshes
+
+ Esta bandera permite configurar el tiempo de demora en la generacion de tokens, Por mas que exista una ventana de token validos, se recomienda un valor que no presione al usuario a la hora de ingresarlo (recomendado entre 10 y 30)
+
+ -w, --window-size=W            Set window of concurrently valid codes
+
+ Esta bandera permite configurar la cantidad de codigos validos en un momento dado. El funcionamiento es tal que los W-1 codigos anteriores siguen siendo validos para la validacion del 2FA

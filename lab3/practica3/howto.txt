@@ -1,0 +1,28 @@
+Una vez establecidos y ejecutados los archivos de configuracion del cliente y el servidor de openVPN
+tomamos una captura del trafico de la red subyacente a la VPN
+
+En nuestro caso la red es 10.0.8.0/24
+El host(openVPN server) es 10.0.8.6
+El client(nosotros) es 10.0.8.4
+
+Utilizamos tcpdump en la interfaz de la susodicha red
+sudo tcpdump -i ens4 -A -s 0 -w ens4.pcap
+- i = interfaz
+- A = Escribir el paquete en ASCII
+- s = Largo de la foto del paquete, largo 0 setea el valor por defecto 262kb~
+- w = Guardar en el file __FILENAME__
+
+Una vez levantado el monitor de paquetes en la interfaz realizamos 2 peticiones de echo
+echo "hello there, general kenobi" | nc 10.0.8.6 7
+
+El resultado de este comando se puede apreciar en la captura, ya que se ve el mensaje entero en el
+intercambio de paquetes
+
+echo "hello there, general kenobi" | nc 172.16.1.1 7
+
+Este comando viaja completamente cifrado y se puede ver en el intercambio de paquetes
+porque no se ve el mensaje que si se veia previamente.
+Ademas tampoco se descifra a que puerto va, pues no menciona en el intercambio el servicio 'echo'
+si no el servicio de 'openvpn'
+
+Realizando este pequenho experimento puede ver si tiene bien configurada su red de VPN
